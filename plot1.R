@@ -1,6 +1,20 @@
 # load data table library
 library("data.table")
 
+# file url to be downloaded
+fileURL <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+
+# file download location
+fileLocation <- file.path(getwd(), "household_power_consumption.zip")
+
+# download the file
+download.file(fileURL, fileLocation)
+
+
+# unzip the  file
+unzip(zipfile = fileLocation, exdir = getwd())
+
+
 # read the text file
 dataPower <- data.table::fread(input = "household_power_consumption.txt", na.strings="?")
 
